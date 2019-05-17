@@ -1,0 +1,28 @@
+{
+  "name": "dearliquorapi.express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.0",
+    "knex": "^0.16.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurence-liu/DearLiquorAPI.Express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurence-liu/DearLiquorAPI.Express/issues"
+  },
+  "homepage": "https://github.com/laurence-liu/DearLiquorAPI.Express#readme"
+}
