@@ -1,7 +1,28 @@
 const express = require('express')
+const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt-nodejs')
+const cors = require('cors')
+const knex = require('knex')
+
+const register = require('./controllers/register')
+
+const db = knex({
+    client: 'pg',
+    connection: {
+        host: '127.0.0.1',
+        user: 'laurenceliu',
+        password: 'java',
+        database: 'dear-liquor'
+    }
+});
+
 const app = express()
-const port = 3000
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(cors())
+app.use(bodyParser.json())
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
+
+app.listen(3000, () => {
+    console.log('app is running on port 3000')
+})
