@@ -6,13 +6,14 @@ const knex = require('knex')
 
 const signin = require('./controllers/signin')
 const register = require('./controllers/register')
+const cocktails = require('./controllers/cocktails')
 
 const db = knex({
     client: 'pg',
     connection: {
         host: '127.0.0.1',
         user: 'laurenceliu',
-        password: 'java',
+        password: '***',
         database: 'dear-liquor'
     }
 });
@@ -24,6 +25,7 @@ app.use(bodyParser.json())
 
 app.post('/signin', signin.handleSignin(db, bcrypt))
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
+app.get('/cocktails', (req, res) => { cocktails.handleCocktails(req, res, db) })
 
 app.listen(3000, () => {
     console.log('app is running on port 3000')
