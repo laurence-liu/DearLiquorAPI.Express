@@ -18,10 +18,13 @@ const handleCocktails = (req, res, db) => {
     }
     
     if (base_spirit != null) {
+        String.prototype.capitalize = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
         db.select('*')
             .from('cocktails')
             .orderBy('id')
-            .where('basespirit', 'like', `%${base_spirit}%`)
+            .where('basespirit', 'like', `%${base_spirit.capitalize()}%`)
             .limit(20)
             .offset(20 * (page - 1))
             .then(cocktail => {
