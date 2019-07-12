@@ -21,8 +21,7 @@ const handleCocktails = (req, res, db) => {
         db.select('*')
             .from('cocktails')
             .orderBy('id')
-            .where('basespirit', 'like', '%Whiskey%')
-            .orWhere('basespirit', 'like', '%Whisky%')
+            .where('basespirit', 'like', `%${base_spirit}%`)
             .limit(20)
             .offset(20 * (page - 1))
             .then(cocktail => {
